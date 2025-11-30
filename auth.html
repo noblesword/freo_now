@@ -155,16 +155,16 @@
             if (username === VALID_USER && password === VALID_PASS) {
                 // Store auth token in session storage (cleared when browser closes)
                 sessionStorage.setItem('freoNowAuth', 'authenticated');
-                window.location.href = 'index.html';
+                window.location.href = 'main.html';
             } else {
                 document.getElementById('error').style.display = 'block';
                 document.getElementById('password').value = '';
             }
         });
 
-        // If already authenticated, redirect to index
+        // If already authenticated, redirect to main
         if (sessionStorage.getItem('freoNowAuth') === 'authenticated') {
-            window.location.href = 'index.html';
+            window.location.href = 'main.html';
         }
     </script>
 </body>

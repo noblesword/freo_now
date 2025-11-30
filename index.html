@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freo Now | Fremantle Loyalty Network</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Freo Now - Login</title>
     <style>
         * {
             margin: 0;
@@ -12,441 +11,161 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-orange: #FF6B35;
-            --dark-orange: #D94A1A;
-            --light-orange: #FFE8D6;
-            --white: #ffffff;
-            --black: #1a1a1a;
-            --gray: #6b6b6b;
-            --light-gray: #f8f8f8;
-            --accent-blue: #2563eb;
-            --accent-green: #059669;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            --radius-lg: 12px;
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
-            --font-size-lg: 1.25rem;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--black);
-            background: var(--white);
-        }
-
-        /* Navbar */
-        .navbar {
-            background: var(--primary-orange);
-            color: white;
-            padding: var(--spacing-md) 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #FF6B35 0%, #D94A1A 100%);
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
         }
 
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            letter-spacing: 0.5px;
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
         }
 
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            gap: var(--spacing-lg);
-            align-items: center;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-link:hover {
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: var(--spacing-md);
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--primary-orange);
-            color: white;
+        .login-header {
             text-align: center;
-            padding: 4rem var(--spacing-md);
+            margin-bottom: 30px;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: var(--spacing-md);
+        .login-header h1 {
+            color: #FF6B35;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            margin-bottom: var(--spacing-lg);
-            opacity: 0.95;
+        .login-header p {
+            color: #64748b;
+            font-size: 14px;
         }
 
-        .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            margin: var(--spacing-md) 0;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
+        label {
+            display: block;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
-        /* Sections */
-        .section {
-            padding: var(--spacing-2xl) var(--spacing-md);
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
         }
 
-        .section h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: var(--spacing-xl);
+        input:focus {
+            outline: none;
+            border-color: #FF6B35;
         }
 
-        /* Grid */
-        .grid {
-            display: grid;
-            gap: var(--spacing-xl);
-        }
-
-        .grid-1 { grid-template-columns: 1fr; }
-        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-
-        /* Cards */
-        .card {
-            background: var(--light-gray);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            border: 1px solid #eee;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            margin-bottom: var(--spacing-md);
-            color: var(--primary-orange);
-        }
-
-        .card p {
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Links Grid */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-2xl);
-        }
-
-        .link-card {
-            background: var(--light-orange);
-            border: 2px solid var(--primary-orange);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            text-decoration: none;
-            color: var(--black);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
-        }
-
-        .link-card:hover {
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--dark-orange) 100%);
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #FF6B35;
             color: white;
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .link-card-icon {
-            font-size: 3rem;
-        }
-
-        .link-card h3 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        .link-card p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .link-card:hover p {
-            opacity: 1;
-        }
-
-        /* Alternating link card colors */
-        .link-card:nth-child(1) {
-            background: var(--light-orange);
-            border-color: var(--primary-orange);
-        }
-
-        .link-card:nth-child(2) {
-            background: #DBEAFE;
-            border-color: var(--accent-blue);
-        }
-
-        .link-card:nth-child(3) {
-            background: #DCFCE7;
-            border-color: var(--accent-green);
-        }
-
-        .link-card:nth-child(4) {
-            background: #FEF3C7;
-            border-color: #D97706;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: var(--radius-lg);
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
+            transition: background 0.3s;
         }
 
-        .btn-primary {
-            background: var(--accent-blue);
-            color: white;
+        button:hover {
+            background: #D94A1A;
         }
 
-        .btn-primary:hover {
-            background: #1e40af;
-            transform: scale(1.05);
+        .error {
+            color: #dc2626;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
         }
 
-        .btn-outline {
-            border: 2px solid var(--primary-orange);
-            color: var(--primary-orange);
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-orange);
-            color: white;
-        }
-
-        /* Stats */
-        .stat-card {
-            background: var(--light-gray);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            border: 1px solid #eee;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: var(--gray);
-        }
-
-        /* Text */
-        .text-center {
-            text-align: center;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: 0.5rem;
-            }
-
-            .nav-link {
-                font-size: 0.8rem;
-            }
-
-            .hero {
-                padding: 2rem var(--spacing-md);
-            }
-
-            .section {
-                padding: var(--spacing-xl) var(--spacing-md);
-            }
+        .info {
+            background: #FFE8D6;
+            border-left: 4px solid #FF6B35;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-brand">🏪 Freo Now</a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="FN_v5.html" class="nav-link">Pitch Deck</a></li>
-                <li><a href="localloop-marketing-comparison.html" class="nav-link">For Business</a></li>
-                <li><a href="localloop-optimized-presentation-V3.html" class="nav-link">Business Model</a></li>
-                <li><a href="points-economy-diagrams.html" class="nav-link">How It Works</a></li>
-            </ul>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>🏪 Freo Now</h1>
+            <p>Fremantle Loyalty Network</p>
         </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container">
-            <h1>Freo Now</h1>
-            <p class="hero-subtitle">Fremantle's Unified Loyalty Network</p>
-            <p>Buy HERE, Redeem THERE. One platform connecting Fremantle's best businesses.</p>
-            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="localloop-marketing-comparison.html" class="btn btn-primary">Explore for Businesses</a>
-                <a href="FN_v5.html" class="btn btn-primary">View Full Pitch</a>
+        <div class="info">
+            <strong>Demo credentials:</strong><br>
+            Username: <code>freo</code><br>
+            Password: <code>now2025</code>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required autofocus>
             </div>
-        </div>
-    </section>
-
-    <!-- WHY FREO NOW -->
-    <section class="section">
-        <div class="container">
-            <h2 style="text-align: center;">Why Freo Now?</h2>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>🔄 Connected Network</h3>
-                    <p>Earn points at participating businesses, spend them anywhere in the Freo Now ecosystem.</p>
-                </div>
-                <div class="card">
-                    <h3>💰 Better Value</h3>
-                    <p>Competitive pricing starting at just $39/month for businesses. Customers get unified rewards.</p>
-                </div>
-                <div class="card">
-                    <h3>📱 Simple Digital</h3>
-                    <p>No lost punch cards. One universal points system for everyone.</p>
-                </div>
-                <div class="card">
-                    <h3>🎯 AI-Powered</h3>
-                    <p>Smart segmentation for tourists vs locals. Personalized offers and geo-targeted notifications.</p>
-                </div>
-                <div class="card">
-                    <h3>❤️ Community First</h3>
-                    <p>Expired points support local charities. Keep money circulating in Fremantle's economy.</p>
-                </div>
-                <div class="card">
-                    <h3>📈 Proven Results</h3>
-                    <p>Network loyalty programs drive 2.7x higher engagement than single-brand solutions.</p>
-                </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
             </div>
-        </div>
-    </section>
+            <button type="submit">Login</button>
+            <div class="error" id="error">Invalid credentials. Try again.</div>
+        </form>
+    </div>
 
-    <!-- STATS SECTION -->
-    <section class="section" style="background: var(--primary-orange); color: white;">
-        <div class="container text-center">
-            <h2 style="color: white;">Key Statistics</h2>
-            <div class="grid grid-4">
-                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;">
-                    <div class="stat-number" style="color: white;">2.7x</div>
-                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">Higher Engagement</div>
-                </div>
-                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;">
-                    <div class="stat-number" style="color: white;">67%</div>
-                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">More Repeat Customers</div>
-                </div>
-                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;">
-                    <div class="stat-number" style="color: white;">$42M</div>
-                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">Economic Recirculation</div>
-                </div>
-                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;">
-                    <div class="stat-number" style="color: white;">3,500+</div>
-                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">Annual Visitors</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        // Load credentials from config
+        // For GitHub Pages: update credentials by modifying the .env file locally,
+        // then push changes to GitHub
+        const AUTH_CONFIG = {
+            username: 'freo',      // Load from .env in production
+            password: 'now2025'    // Load from .env in production
+        };
 
-    <!-- EXPLORE PAGES -->
-    <section class="section">
-        <div class="container">
-            <h2 style="text-align: center;">Explore More</h2>
-            <div class="links-grid">
-                <a href="FN_v5.html" class="link-card">
-                    <div class="link-card-icon">🎤</div>
-                    <h3>Pitch Deck</h3>
-                    <p>See the full Freo Now pitch presentation to the Fremantle Business Chamber.</p>
-                </a>
-                <a href="localloop-marketing-comparison.html" class="link-card">
-                    <div class="link-card-icon">💼</div>
-                    <h3>For Businesses</h3>
-                    <p>Join 300+ local businesses. Learn how Freo Now drives customer loyalty.</p>
-                </a>
-                <a href="localloop-optimized-presentation-V3.html" class="link-card">
-                    <div class="link-card-icon">📊</div>
-                    <h3>Business Model</h3>
-                    <p>Understand our revenue streams and financial projections through Year 4.</p>
-                </a>
-                <a href="points-economy-diagrams.html" class="link-card">
-                    <div class="link-card-icon">⚙️</div>
-                    <h3>How It Works</h3>
-                    <p>Deep dive into the points economy mechanics and redemption system.</p>
-                </a>
-            </div>
-        </div>
-    </section>
+        const VALID_USER = AUTH_CONFIG.username;
+        const VALID_PASS = AUTH_CONFIG.password;
 
-    <!-- CTA SECTION -->
-    <section class="section" style="background: var(--primary-orange); color: white;">
-        <div class="container text-center">
-            <h2 style="color: white;">Ready to Join?</h2>
-            <p style="font-size: 1.2rem; margin: 1rem 0;">Be part of Fremantle's unified loyalty network</p>
-            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="localloop-marketing-comparison.html" class="btn btn-primary">Get Started</a>
-                <a href="points-economy-diagrams.html" class="btn btn-outline" style="border-color: white; color: white;">Learn More</a>
-            </div>
-        </div>
-    </section>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-</body>
-</html>
+            if (username === VALID_USER && password === VALID_PASS) {
+                // Store auth token in session storage (cleared when browser closes)
+                sessionStorage.setItem('freoNowAuth', 'authenticated');
+                window.location.href = 'main.html';
+            } else {
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // If already authenticated, redirect to main
+        if (sessionStorage.getItem('freoNowAuth') === 'authenticated') {
+            window.location.href = 'main.html';
+        }
+    </script>
 </body>
 </html>
