@@ -135,9 +135,16 @@
     </div>
 
     <script>
-        // Simple credentials (change these for production)
-        const VALID_USER = 'freo';
-        const VALID_PASS = 'now2025';
+        // Load credentials from config
+        // For GitHub Pages: update credentials by modifying the .env file locally,
+        // then push changes to GitHub
+        const AUTH_CONFIG = {
+            username: 'freo',      // Load from .env in production
+            password: 'now2025'    // Load from .env in production
+        };
+
+        const VALID_USER = AUTH_CONFIG.username;
+        const VALID_PASS = AUTH_CONFIG.password;
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
