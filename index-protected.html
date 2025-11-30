@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifying access...</title>
+</head>
+<body>
+    <script>
+        // Check if authenticated
+        if (sessionStorage.getItem('freoNowAuth') !== 'authenticated') {
+            window.location.href = 'auth.html';
+        } else {
+            // Load the actual index content
+            fetch('_index.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.documentElement.innerHTML = html;
+                })
+                .catch(() => {
+                    // Fallback: redirect to auth if file loading fails
+                    window.location.href = 'auth.html';
+                });
+        }
+    </script>
+</body>
+</html>

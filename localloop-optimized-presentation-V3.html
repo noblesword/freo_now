@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalLoop Rewards - OPTIMIZED Business Model</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: #FF6B35;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 0.5rem;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
+        }
+        
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #1e293b; background: #f8fafc; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; box-shadow: 0 0 40px rgba(0,0,0,0.08); }
+        .hero { background: #FF6B35; color: white; padding: 80px 60px; }
+        .hero h1 { font-size: 56px; margin-bottom: 15px; }
+        .hero .tagline { font-size: 24px; opacity: 0.95; margin-bottom: 30px; }
+        .key-stat { display: inline-block; background: rgba(255,255,255,0.15); padding: 15px 30px; border-radius: 50px; margin: 10px 10px 0 0; }
+        .section { padding: 60px; border-bottom: 1px solid #e2e8f0; }
+        h2 { color: #FF6B35; font-size: 38px; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 3px solid #FF6B35; }
+        h3 { color: #D94A1A; font-size: 26px; margin: 30px 0 20px 0; }
+        .highlight-box { background: #FFE8D6; border-left: 5px solid #FF6B35; padding: 30px; margin: 30px 0; border-radius: 8px; font-size: 18px; }
+        .success-box { background: #FFF5E6; border-left: 5px solid #FF6B35; padding: 25px; margin: 25px 0; border-radius: 8px; }
+        .optimization-box { background: #FFE8D6; border-left: 5px solid #D94A1A; padding: 25px; margin: 25px 0; border-radius: 8px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin: 30px 0; }
+        .stat-card { background: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 30px; text-align: center; transition: all 0.3s; }
+        .stat-card:hover { border-color: #2563eb; box-shadow: 0 8px 20px rgba(37,99,235,0.15); transform: translateY(-5px); }
+        .stat-number { font-size: 42px; font-weight: bold; color: #2563eb; margin-bottom: 8px; }
+        .stat-label { color: #64748b; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 30px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-radius: 8px; overflow: hidden; }
+        .comparison-table th { background: #FF6B35; color: white; padding: 20px; text-align: left; font-weight: 600; }
+        .comparison-table td { padding: 18px 20px; border-bottom: 1px solid #e2e8f0; }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+        .comparison-table tr:hover { background: #FFE8D6; }
+        .comparison-table .highlight-col { background: #FFE8D6; font-weight: bold; color: #D94A1A; }
+        .cta-section { background: #FF6B35; color: white; padding: 60px; text-align: center; }
+        .cta-section h2 { color: white; border: none; }
+        .footer { background: #FF6B35; color: white; text-align: center; padding: 40px; font-size: 14px; }
+        .badge-new { background: #ec4899; color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px; margin-left: 10px; vertical-align: middle; }
+        .badge-improved { background: #f59e0b; color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px; margin-left: 10px; vertical-align: middle; }
+        @media print { .section { page-break-inside: avoid; } }
+        @media (max-width: 768px) { .hero { padding: 50px 30px; } .hero h1 { font-size: 36px; } .section { padding: 40px 30px; } h2 { font-size: 28px; } }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">🏪 Freo Now</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="FN_v5.html" class="nav-link">Pitch Deck</a></li>
+                <li><a href="localloop-marketing-comparison.html" class="nav-link">For Business</a></li>
+                <li><a href="localloop-optimized-presentation-V3.html" class="nav-link">Business Model</a></li>
+                <li><a href="points-economy-diagrams.html" class="nav-link">How It Works</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="hero">
+            <h1>LocalLoop Rewards 2.0</h1>
+            <div class="tagline">OPTIMIZED for Maximum Profitability</div>
+            <div style="margin-top: 20px; font-size: 18px; opacity: 0.9;">Dynamic Pricing + 35% Redemption Fee + Premium Services + Data Monetization</div>
+            <div style="margin-top: 30px;">
+                <div class="key-stat">12-Month Break-Even</div>
+                <div class="key-stat">62% Profit Margin by Y3</div>
+                <div class="key-stat">$2.4M+ Profit by Year 4</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Optimized Business Model</h2>
+            <div class="highlight-box">
+                <strong>Key Optimization:</strong> We've restructured the business model to achieve profitability 6 months faster, double the profit margins, and create sustainable competitive advantages through premium services and data insights.
+            </div>
+            
+            <h3>Revenue Stream Optimization <span class="badge-improved">ENHANCED</span></h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">Redemption Fee (Was 25%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$150-500</div>
+                    <div class="stat-label">Dynamic Monthly Tiers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$250K+</div>
+                    <div class="stat-label">New Data Services Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Retention Rate Target</div>
+                </div>
+            </div>
+
+            <h3>Five Optimized Revenue Pillars <span class="badge-new">NEW</span></h3>
+            <ol style="line-height: 2.2; font-size: 17px; margin: 20px 0;">
+                <li><strong>Dynamic Tiered Memberships:</strong> Bronze ($150), Silver ($250), Gold ($400), Platinum ($500) with performance-based pricing</li>
+                <li><strong>Enhanced Redemption Fees:</strong> 35% platform fee (industry standard is 30-40%)</li>
+                <li><strong>Premium Marketing Services:</strong> Featured placements, boost campaigns, targeting options</li>
+                <li><strong>Data Analytics Packages:</strong> Consumer insights, competitive intelligence, trend reports ($99-499/month)</li>
+                <li><strong>Transaction Processing:</strong> 2.9% + $0.30 per transaction (pass-through to businesses)</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>📊 Optimized Financial Projections</h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Metric</th>
+                    <th>Year 1</th>
+                    <th>Year 2</th>
+                    <th>Year 3</th>
+                    <th>Year 4</th>
+                </tr>
+                <tr>
+                    <td><strong>Businesses</strong></td>
+                    <td>75 → 150</td>
+                    <td>150 → 350</td>
+                    <td>400</td>
+                    <td>450</td>
+                </tr>
+                <tr>
+                    <td><strong>Customers</strong></td>
+                    <td>5K → 15K</td>
+                    <td>15K → 30K</td>
+                    <td>40,000</td>
+                    <td>50,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Revenue</strong></td>
+                    <td>$485,000</td>
+                    <td class="highlight-col">$1,625,000</td>
+                    <td class="highlight-col">$2,450,000</td>
+                    <td class="highlight-col">$3,125,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Membership Fees</strong></td>
+                    <td>$195,000</td>
+                    <td>$735,000</td>
+                    <td>$960,000</td>
+                    <td>$1,080,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Redemption Fees (35%)</strong></td>
+                    <td>$125,000</td>
+                    <td>$420,000</td>
+                    <td>$700,000</td>
+                    <td>$945,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Premium Services</strong></td>
+                    <td>$75,000</td>
+                    <td>$280,000</td>
+                    <td>$450,000</td>
+                    <td>$600,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Analytics</strong></td>
+                    <td>$40,000</td>
+                    <td>$140,000</td>
+                    <td>$240,000</td>
+                    <td>$350,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Transaction Fees</strong></td>
+                    <td>$50,000</td>
+                    <td>$50,000</td>
+                    <td>$100,000</td>
+                    <td>$150,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Expenses</strong></td>
+                    <td>$520,000</td>
+                    <td>$685,000</td>
+                    <td>$925,000</td>
+                    <td>$1,050,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Net Profit/(Loss)</strong></td>
+                    <td style="color: #dc2626;">-$35,000</td>
+                    <td class="highlight-col" style="color: #16a34a;">+$940,000</td>
+                    <td class="highlight-col" style="color: #16a34a;">+$1,525,000</td>
+                    <td class="highlight-col" style="color: #16a34a;">+$2,075,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Profit Margin</strong></td>
+                    <td>-</td>
+                    <td class="highlight-col">58%</td>
+                    <td class="highlight-col">62%</td>
+                    <td class="highlight-col">66%</td>
+                </tr>
+                <tr>
+                    <td><strong>Cumulative Profit</strong></td>
+                    <td style="color: #dc2626;">-$35,000</td>
+                    <td class="highlight-col" style="color: #16a34a;">+$905,000</td>
+                    <td class="highlight-col" style="color: #16a34a;">+$2,430,000</td>
+                    <td class="highlight-col" style="color: #16a34a;">+$4,505,000</td>
+                </tr>
+            </table>
+
+            <div class="optimization-box">
+                <strong>🎯 Key Improvements vs. Original Model:</strong>
+                <ul style="margin-top: 15px; line-height: 2.2;">
+                    <li>Break-even: <strong>12 months</strong> (was 18 months) - 33% faster</li>
+                    <li>Year 2 Profit: <strong>$940K</strong> (was $300K) - 3.1x higher</li>
+                    <li>4-Year Cumulative: <strong>$4.5M</strong> (was $1M) - 4.5x higher</li>
+                    <li>Average Profit Margin: <strong>62%</strong> (was 42%) - 20 points higher</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Optimization Strategies</h2>
+            
+            <h3>1. Dynamic Pricing Model <span class="badge-new">NEW</span></h3>
+            <div class="success-box">
+                <strong>Performance-Based Tiers:</strong>
+                <ul style="margin-top: 10px; line-height: 2;">
+                    <li><strong>Bronze ($150/mo):</strong> Businesses with <$50K annual revenue</li>
+                    <li><strong>Silver ($250/mo):</strong> $50K-$150K revenue + enhanced analytics</li>
+                    <li><strong>Gold ($400/mo):</strong> $150K-$500K revenue + priority support</li>
+                    <li><strong>Platinum ($500/mo):</strong> $500K+ revenue + white-glove service</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Auto-upgrade based on transaction volume ensures fair pricing and maximizes revenue per business</strong></p>
+            </div>
+
+            <h3>2. Optimized Fee Structure <span class="badge-improved">ENHANCED</span></h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Fee Type</th>
+                    <th>Original Model</th>
+                    <th>Optimized Model</th>
+                    <th>Impact</th>
+                </tr>
+                <tr>
+                    <td>Redemption Fee</td>
+                    <td>25%</td>
+                    <td class="highlight-col">35%</td>
+                    <td>+40% revenue increase</td>
+                </tr>
+                <tr>
+                    <td>Onboarding Fee</td>
+                    <td>$0</td>
+                    <td class="highlight-col">$299-$999</td>
+                    <td>+$150K Year 1</td>
+                </tr>
+                <tr>
+                    <td>Transaction Processing</td>
+                    <td>Absorbed</td>
+                    <td class="highlight-col">Pass-through</td>
+                    <td>Saves 3% on costs</td>
+                </tr>
+                <tr>
+                    <td>Premium Placement</td>
+                    <td>$50/month</td>
+                    <td class="highlight-col">$99-$299/month</td>
+                    <td>+200% revenue</td>
+                </tr>
+                <tr>
+                    <td>Data Analytics Access</td>
+                    <td>Included</td>
+                    <td class="highlight-col">$99-$499 add-on</td>
+                    <td>+$350K/year by Y4</td>
+                </tr>
+            </table>
+
+            <h3>3. Cost Optimization Measures <span class="badge-new">NEW</span></h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Automated Onboarding</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">-40%</div>
+                    <div class="stat-label">Support Costs via AI</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$50K</div>
+                    <div class="stat-label">Annual Savings on Tech</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15:1</div>
+                    <div class="stat-label">Business per Staff Ratio</div>
+                </div>
+            </div>
+
+            <h3>4. Revenue Acceleration Tactics <span class="badge-improved">ENHANCED</span></h3>
+            <ol style="line-height: 2.2; font-size: 17px; margin: 20px 0;">
+                <li><strong>Bulk Contracts:</strong> 20% discount for 24-month commitments (improves cash flow)</li>
+                <li><strong>Referral Program:</strong> $500 credit for each successful business referral</li>
+                <li><strong>Category Exclusivity:</strong> Premium tier gets exclusive category rights (+$200/mo)</li>
+                <li><strong>Seasonal Campaigns:</strong> Charge 45% redemption fee during peak seasons</li>
+                <li><strong>Float Management:</strong> Earn 3-5% interest on point float balance</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>📈 Data Monetization Strategy <span class="badge-new">NEW REVENUE STREAM</span></h2>
+            
+            <h3>Analytics Products Portfolio</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">$99</div>
+                    <div class="stat-label">Basic Insights Package</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$299</div>
+                    <div class="stat-label">Competitive Intelligence</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$499</div>
+                    <div class="stat-label">Predictive Analytics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$999</div>
+                    <div class="stat-label">Custom Reports</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Data Services Revenue Potential:</strong>
+                <ul style="margin-top: 15px; line-height: 2;">
+                    <li>Year 1: $40K (20 businesses subscribing)</li>
+                    <li>Year 2: $140K (50+ businesses)</li>
+                    <li>Year 3: $240K (80+ businesses)</li>
+                    <li>Year 4: $350K (100+ businesses)</li>
+                </ul>
+                <p style="margin-top: 15px; font-weight: bold;">Zero marginal cost = 95%+ profit margin on data services</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚡ Rapid Implementation Plan</h2>
+            
+            <h3>Accelerated 30-Day Launch <span class="badge-improved">FASTER</span></h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Week</th>
+                    <th>Action Items</th>
+                    <th>Target</th>
+                    <th>Revenue Impact</th>
+                </tr>
+                <tr>
+                    <td><strong>Week 1</strong></td>
+                    <td>Sign anchor businesses, setup payment processing</td>
+                    <td>10 businesses</td>
+                    <td>$5,000 onboarding fees</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 2</strong></td>
+                    <td>Launch digital marketing, automate onboarding</td>
+                    <td>25 businesses</td>
+                    <td>$12,500 fees + monthly</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 3</strong></td>
+                    <td>Activate customer acquisition campaigns</td>
+                    <td>50 businesses, 2K customers</td>
+                    <td>$25,000 monthly recurring</td>
+                </tr>
+                <tr>
+                    <td><strong>Week 4</strong></td>
+                    <td>Optimize, upsell premium services</td>
+                    <td>75 businesses, 5K customers</td>
+                    <td>$40,000 MRR achieved</td>
+                </tr>
+            </table>
+
+            <div class="success-box">
+                <strong>Month 1 Target:</strong> $40,000 MRR (Monthly Recurring Revenue)<br>
+                <strong>Month 3 Target:</strong> $75,000 MRR<br>
+                <strong>Month 6 Target:</strong> $100,000 MRR<br>
+                <strong>Month 12 Target:</strong> Break-even with $135,000+ MRR
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Competitive Advantages</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">Higher Margins than Competitors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Revenue per Business</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Customer Retention Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Revenue Streams</div>
+                </div>
+            </div>
+
+            <h3>Moat Building Strategy</h3>
+            <ol style="line-height: 2.2; font-size: 17px; margin: 20px 0;">
+                <li><strong>Network Effects:</strong> More businesses = more value for customers = more businesses</li>
+                <li><strong>Data Advantage:</strong> Proprietary consumer insights become more valuable over time</li>
+                <li><strong>Switching Costs:</strong> Integration depth makes it expensive to leave</li>
+                <li><strong>Brand Lock-in:</strong> Become synonymous with local loyalty</li>
+                <li><strong>Category Exclusivity:</strong> Premium members lock out competitors</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>📊 Sensitivity Analysis</h2>
+            
+            <h3>Revenue Optimization Scenarios</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Scenario</th>
+                    <th>Redemption Fee</th>
+                    <th>Avg Monthly Fee</th>
+                    <th>Year 2 Profit</th>
+                    <th>Break-even</th>
+                </tr>
+                <tr>
+                    <td>Conservative</td>
+                    <td>30%</td>
+                    <td>$200</td>
+                    <td>$650K</td>
+                    <td>14 months</td>
+                </tr>
+                <tr>
+                    <td class="highlight-col"><strong>Optimized (Target)</strong></td>
+                    <td class="highlight-col">35%</td>
+                    <td class="highlight-col">$250</td>
+                    <td class="highlight-col">$940K</td>
+                    <td class="highlight-col">12 months</td>
+                </tr>
+                <tr>
+                    <td>Aggressive</td>
+                    <td>40%</td>
+                    <td>$300</td>
+                    <td>$1.2M</td>
+                    <td>10 months</td>
+                </tr>
+                <tr>
+                    <td>Premium Focus</td>
+                    <td>35%</td>
+                    <td>$350</td>
+                    <td>$1.4M</td>
+                    <td>9 months</td>
+                </tr>
+            </table>
+
+            <div class="optimization-box">
+                <strong>Key Finding:</strong> Every 5% increase in redemption fee improves annual profit by ~$200K. Every $50 increase in average monthly fee adds ~$150K to annual revenue.
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>🚀 The Optimized Opportunity</h2>
+            <p style="font-size: 22px; margin: 30px 0;">LocalLoop 2.0 delivers 4.5x better returns through strategic optimization</p>
+            
+            <div class="stats-grid" style="margin: 40px 0;">
+                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+                    <div class="stat-number" style="color: white;">12</div>
+                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">Months to Profit</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+                    <div class="stat-number" style="color: white;">750%</div>
+                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">4-Year ROI</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+                    <div class="stat-number" style="color: white;">$4.5M</div>
+                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">4-Year Profit</div>
+                </div>
+                <div class="stat-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+                    <div class="stat-number" style="color: white;">66%</div>
+                    <div class="stat-label" style="color: rgba(255,255,255,0.9);">Profit Margins</div>
+                </div>
+            </div>
+            
+            <p style="font-size: 26px; margin: 40px 0;"><strong>Maximum profitability. Minimum risk. Proven model.</strong></p>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; margin-top: 40px;">
+                <p style="font-size: 20px; line-height: 1.8;">
+                    ✅ 35% redemption fee (industry validated)<br>
+                    ✅ Dynamic tiered pricing ($150-$500/month)<br>
+                    ✅ 5 revenue streams for stability<br>
+                    ✅ Data monetization opportunity<br>
+                    ✅ 66% profit margins by Year 4
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="line-height: 2;">
+                <strong>LocalLoop 2.0:</strong> Optimized for Maximum Profitability<br>
+                <strong>Contact:</strong> [Name] | [Email] | [Phone]
+            </p>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                © 2025 LocalLoop Optimized | Version 5.0 | Profit-Maximized Model
+            </div>
+        </div>
+    </div>
+</body>
+</html>

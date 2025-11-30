@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalLoop Points Economy - Visual Flow Diagrams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: #FF6B35;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 0.5rem;
+            }
+            .nav-link {
+                font-size: 0.8rem;
+            }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .diagram-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .diagram-title {
+            font-size: 32px;
+            color: #FF6B35;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #FF6B35;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .flow-box {
+            flex: 1;
+            min-width: 200px;
+            background: #FF6B35;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+        }
+        
+        .flow-box.business {
+            background: #D94A1A;
+        }
+        
+        .flow-box.customer {
+            background: #FF6B35;
+        }
+        
+        .flow-box.platform {
+            background: #DBEAFE;
+            color: #1a1a1a;
+            border: 2px solid #2563eb;
+        }
+        
+        .flow-box.redeem {
+            background: #FFE8D6;
+            color: #1a1a1a;
+        }
+        
+        .flow-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .flow-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .flow-amount {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .flow-detail {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .arrow {
+            font-size: 40px;
+            color: #FF6B35;
+            margin: 0 10px;
+        }
+        
+        .vertical-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .vertical-arrow {
+            text-align: center;
+            font-size: 40px;
+            color: #FF6B35;
+        }
+        
+        .info-box {
+            background: #FFE8D6;
+            border-left: 5px solid #FF6B35;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .info-box h3 {
+            color: #D94A1A;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .split-diagram {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 20px;
+            align-items: center;
+            margin: 40px 0;
+        }
+        
+        .split-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .split-line {
+            width: 2px;
+            height: 60px;
+            background: #FF6B35;
+        }
+        
+        .split-arrows {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .arrow-label {
+            font-size: 14px;
+            color: #D94A1A;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .revenue-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .revenue-card {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .revenue-card:hover {
+            border-color: #FF6B35;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.2);
+        }
+        
+        .revenue-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #059669;
+            margin: 15px 0;
+        }
+        
+        .revenue-label {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 600;
+        }
+        
+        .percentage {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .cycle-diagram {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin: 40px 0;
+        }
+        
+        .cycle-box {
+            position: absolute;
+            width: 200px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .cycle-box.top {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .cycle-box.right {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .cycle-box.bottom {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .cycle-box.left {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .cycle-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        .comparison-table th {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-diagram {
+                flex-direction: column;
+            }
+            .arrow {
+                transform: rotate(90deg);
+            }
+            .split-diagram {
+                grid-template-columns: 1fr;
+            }
+            .cycle-diagram {
+                height: 700px;
+            }
+            .cycle-box {
+                width: 160px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">🏪 Freo Now</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="FN_v5.html" class="nav-link">Pitch Deck</a></li>
+                <li><a href="localloop-marketing-comparison.html" class="nav-link">For Business</a></li>
+                <li><a href="localloop-optimized-presentation-V3.html" class="nav-link">Business Model</a></li>
+                <li><a href="points-economy-diagrams.html" class="nav-link">How It Works</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <h1>LocalLoop Points Economy</h1>
+            <p>Visual Flow Diagrams: How the System Works</p>
+        </div>
+        
+        <!-- Diagram 1: Point Purchase & Issuance -->
+        <div class="diagram-container">
+            <h2 class="diagram-title">1. Point Purchase & Issuance Flow</h2>
+            
+            <div class="flow-diagram">
+                <div class="flow-box business">
+                    <div class="flow-number">1</div>
+                    <div class="flow-title">Business Buys Points</div>
+                    <div class="flow-amount">10,000 points</div>
+                    <div class="flow-detail">
+                        Cost: $110<br>
+                        ($0.011 per point)<br>
+                        10% markup
+                    </div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-box platform">
+                    <div class="flow-number">2</div>
+                    <div class="flow-title">Platform Earns</div>
+                    <div class="flow-amount">$10</div>
+                    <div class="flow-detail">
+                        10% of purchase<br>
+                        Points loaded to<br>
+                        business float
+                    </div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-box customer">
+                    <div class="flow-number">3</div>
+                    <div class="flow-title">Customer Earns Points</div>
+                    <div class="flow-amount">40 points</div>
+                    <div class="flow-detail">
+                        Spends $40<br>
+                        Gets 40 points<br>
+                        ($0.40 face value)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h3>💡 How It Works</h3>
+                <p><strong>Business purchases points at a 10% markup:</strong> They pay $0.011 per point (1.1 cents) which has a face value of $0.01 (1 cent) to customers. This gives the platform $0.001 per point in revenue.</p>
+                <p style="margin-top: 10px;"><strong>Points issued from float:</strong> When a customer makes a purchase, the business issues points from their pre-purchased float. Customer earns 1 point per dollar spent.</p>
+            </div>
+        </div>
+        
+        <!-- Diagram 2: Point Redemption with 25% Fee -->
+        <div class="diagram-container">
+            <h2 class="diagram-title">2. Point Redemption Flow (The Big Revenue Driver)</h2>
+            
+            <div class="flow-diagram">
+                <div class="flow-box customer">
+                    <div class="flow-number">1</div>
+                    <div class="flow-title">Customer Redeems</div>
+                    <div class="flow-amount">200 points</div>
+                    <div class="flow-detail">
+                        Face value: $2.00<br>
+                        At different business<br>
+                        Gets $2 in goods
+                    </div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-box platform">
+                    <div class="flow-number">2</div>
+                    <div class="flow-title">Platform Takes 25%</div>
+                    <div class="flow-amount">$0.50</div>
+                    <div class="flow-detail">
+                        25% platform fee<br>
+                        Pure profit<br>
+                        <span class="highlight">High margin!</span>
+                    </div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="flow-box redeem">
+                    <div class="flow-number">3</div>
+                    <div class="flow-title">Business Gets Credit</div>
+                    <div class="flow-amount">$1.50</div>
+                    <div class="flow-detail">
+                        75% of face value<br>
+                        Net cost: $0.50<br>
+                        Gained a customer!
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h3>🎯 Why This is Powerful</h3>
+                <p><strong>Platform keeps 25% of every redemption:</strong> This is nearly 100% profit margin since there's no cost of goods. The platform just processes the transaction and keeps a quarter of the face value.</p>
+                <p style="margin-top: 10px;"><strong>Business perspective:</strong> They "lose" $0.50 on a $2 redemption, but this is actually a customer acquisition cost of just $0.50 - compare that to $5-50 for traditional advertising!</p>
+            </div>
+            
+            <div class="revenue-breakdown">
+                <div class="revenue-card">
+                    <div class="revenue-label">Customer Benefit</div>
+                    <div class="revenue-amount">$2.00</div>
+                    <p style="color: #64748b;">Full face value of points received in goods/services</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-label">Platform Revenue</div>
+                    <div class="revenue-amount">$0.50</div>
+                    <div class="percentage">25% Fee</div>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-label">Business Credit</div>
+                    <div class="revenue-amount">$1.50</div>
+                    <p style="color: #64748b;">75% credited back to business account</p>
+                </div>
+                <div class="revenue-card">
+                    <div class="revenue-label">Business Net Cost</div>
+                    <div class="revenue-amount">$0.50</div>
+                    <p style="color: #64748b;">Cheapest customer acquisition available</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Diagram 3: Complete Lifecycle -->
+        <div class="diagram-container">
+            <h2 class="diagram-title">3. Complete Point Lifecycle</h2>
+            
+            <div class="vertical-flow">
+                <div class="flow-box business">
+                    <div class="flow-title">Business A (Coffee Shop)</div>
+                    <div class="flow-amount">Buys 10,000 points for $110</div>
+                    <div class="flow-detail">Platform earns: $10 (10% markup)</div>
+                </div>
+                
+                <div class="vertical-arrow">↓</div>
+                
+                <div class="flow-box customer">
+                    <div class="flow-title">Customer Sarah</div>
+                    <div class="flow-amount">Spends $40 at Coffee Shop</div>
+                    <div class="flow-detail">
+                        Earns 40 points ($0.40 value)<br>
+                        Coffee shop's float: -40 points
+                    </div>
+                </div>
+                
+                <div class="vertical-arrow">↓</div>
+                
+                <div class="flow-box customer" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="flow-title">Sarah Accumulates Points</div>
+                    <div class="flow-amount">Shops at 5 businesses over 2 weeks</div>
+                    <div class="flow-detail">
+                        Total earned: 200 points ($2.00 value)<br>
+                        Decides to redeem at bookstore
+                    </div>
+                </div>
+                
+                <div class="vertical-arrow">↓</div>
+                
+                <div class="flow-box redeem">
+                    <div class="flow-title">Business B (Bookstore)</div>
+                    <div class="flow-amount">Sarah redeems 200 points</div>
+                    <div class="flow-detail">
+                        Sarah gets $2 book<br>
+                        Bookstore receives $1.50 credit<br>
+                        Platform keeps $0.50
+                    </div>
+                </div>
+                
+                <div class="vertical-arrow">↓</div>
+                
+                <div class="flow-box platform">
+                    <div class="flow-title">Platform Total Revenue</div>
+                    <div class="flow-amount">$0.60 total</div>
+                    <div class="flow-detail">
+                        $0.10 from issuance (10%)<br>
+                        $0.50 from redemption (25%)<br>
+                        <span class="highlight">60% total margin on original $1 face value!</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h3>🔄 The Continuous Cycle</h3>
+                <p><strong>Bookstore now needs more points:</strong> After crediting redemptions, the bookstore's point float is used up. They purchase more points, generating another 10% markup for the platform.</p>
+                <p style="margin-top: 10px;"><strong>The magic:</strong> The platform earns on BOTH ends - when points are purchased (10%) AND when they're redeemed (25%). This creates a sustainable, high-margin revenue model.</p>
+            </div>
+        </div>
+        
+        <!-- Diagram 4: Revenue Scaling -->
+        <div class="diagram-container">
+            <h2 class="diagram-title">4. Revenue Scaling Over Time</h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Year</th>
+                    <th>Customers</th>
+                    <th>Monthly Transactions</th>
+                    <th>Points Issued</th>
+                    <th>Points Redeemed (70%)</th>
+                    <th>Redemption Fee Revenue</th>
+                </tr>
+                <tr>
+                    <td><strong>Year 1 (H2)</strong></td>
+                    <td>10,000</td>
+                    <td>120,000</td>
+                    <td>3.6M points/mo</td>
+                    <td>2.5M points/mo</td>
+                    <td><span class="highlight">$25,200/month</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Year 2</strong></td>
+                    <td>20,000</td>
+                    <td>300,000</td>
+                    <td>10.5M points/mo</td>
+                    <td>7.4M points/mo</td>
+                    <td><span class="highlight">$73,500/month</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Year 3</strong></td>
+                    <td>25,000</td>
+                    <td>375,000</td>
+                    <td>15M points/mo</td>
+                    <td>11.3M points/mo</td>
+                    <td><span class="highlight">$112,500/month</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Year 4</strong></td>
+                    <td>30,000</td>
+                    <td>450,000</td>
+                    <td>18.9M points/mo</td>
+                    <td>14.2M points/mo</td>
+                    <td><span class="highlight">$141,750/month</span></td>
+                </tr>
+            </table>
+            
+            <div class="info-box" style="background: #f0fdf4; border-left-color: #22c55e;">
+                <h3>📈 Exponential Growth</h3>
+                <p><strong>From $25K/month to $142K/month in just 3 years:</strong> As the customer base grows and transactions increase, redemption fee revenue scales automatically with no additional sales effort required.</p>
+                <p style="margin-top: 10px;"><strong>This is passive income:</strong> Once the platform is running, this revenue flows naturally with every transaction. No marketing campaigns needed, no sales team required.</p>
+            </div>
+        </div>
+        
+        <!-- Diagram 5: Business ROI Example -->
+        <div class="diagram-container">
+            <h2 class="diagram-title">5. Real-World Business Example: Why 25% Fee Works</h2>
+            
+            <div style="background: #eff6ff; padding: 40px; border-radius: 15px; margin: 30px 0;">
+                <h3 style="color: #1e3a8a; text-align: center; margin-bottom: 30px; font-size: 28px;">🍕 Pizza Restaurant Scenario</h3>
+                
+                <div class="flow-diagram">
+                    <div class="flow-box customer">
+                        <div class="flow-title">Customer Arrives</div>
+                        <div class="flow-amount">200 points</div>
+                        <div class="flow-detail">
+                            Wants to redeem<br>
+                            $2 face value
+                        </div>
+                    </div>
+                    
+                    <div class="arrow">→</div>
+                    
+                    <div class="flow-box redeem">
+                        <div class="flow-title">Restaurant's Cost</div>
+                        <div class="flow-amount">$0.50</div>
+                        <div class="flow-detail">
+                            Receives $1.50 credit<br>
+                            Gives $2 in food<br>
+                            Net: -$0.50
+                        </div>
+                    </div>
+                    
+                    <div class="arrow">→</div>
+                    
+                    <div class="flow-box business" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <div class="flow-title">What Actually Happens</div>
+                        <div class="flow-amount">$15 sale</div>
+                        <div class="flow-detail">
+                            Customer orders $15 pizza<br>
+                            Uses $2 in points<br>
+                            Pays $13 cash
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; padding: 30px; background: white; border-radius: 15px;">
+                    <h4 style="color: #1e3a8a; margin-bottom: 20px; font-size: 22px;">Financial Breakdown:</h4>
+                    <div class="revenue-breakdown">
+                        <div class="revenue-card">
+                            <div class="revenue-label">Total Sale</div>
+                            <div class="revenue-amount">$15.00</div>
+                        </div>
+                        <div class="revenue-card">
+                            <div class="revenue-label">Cash Received</div>
+                            <div class="revenue-amount">$13.00</div>
+                        </div>
+                        <div class="revenue-card">
+                            <div class="revenue-label">Platform Credit</div>
+                            <div class="revenue-amount">$1.50</div>
+                        </div>
+                        <div class="revenue-card">
+                            <div class="revenue-label">Marketing Cost</div>
+                            <div class="revenue-amount">$0.50</div>
+                            <p style="color: #16a34a; font-weight: 600; margin-top: 10px;">3.3% of sale!</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 25px; background: #f0fdf4; border-radius: 10px; border: 2px solid #22c55e;">
+                        <h4 style="color: #15803d; margin-bottom: 15px;">🎉 Restaurant's Win:</h4>
+                        <ul style="line-height: 2; color: #166534;">
+                            <li><strong>$0.50 customer acquisition cost</strong> - Compare to $5-50 for ads</li>
+                            <li><strong>Customer came in ready to buy</strong> - High conversion</li>
+                            <li><strong>Upsold from $2 to $15</strong> - 7.5x value</li>
+                            <li><strong>Profit after food cost (60%):</strong> $9 - $0.50 = $8.50 net</li>
+                            <li><strong>ROI: 17:1</strong> ($8.50 profit on $0.50 cost)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Diagram 6: Platform Revenue Streams -->
+        <div class="diagram-container">
+            <h2 class="diagram-title">6. Complete Platform Revenue Model</h2>
+            
+            <div class="cycle-diagram">
+                <div class="cycle-center">
+                    LocalLoop<br>Platform<br>
+                    <div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">Revenue Hub</div>
+                </div>
+                
+                <div class="cycle-box top">
+                    <div style="font-size: 24px; margin-bottom: 10px;">💰</div>
+                    <strong>Membership Fees</strong><br>
+                    <div style="margin-top: 10px; font-size: 20px;">$536K/year</div>
+                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.9;">Bronze/Silver/Gold tiers</div>
+                </div>
+                
+                <div class="cycle-box right">
+                    <div style="font-size: 24px; margin-bottom: 10px;">🎯</div>
+                    <strong>Redemption Fees</strong><br>
+                    <div style="margin-top: 10px; font-size: 20px;">$184K/year</div>
+                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.9;">25% on all redemptions</div>
+                </div>
+                
+                <div class="cycle-box bottom">
+                    <div style="font-size: 24px; margin-bottom: 10px;">📊</div>
+                    <strong>Impression Sales</strong><br>
+                    <div style="margin-top: 10px; font-size: 20px;">$86K/year</div>
+                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.9;">Marketing touchpoints</div>
+                </div>
+                
+                <div class="cycle-box left">
+                    <div style="font-size: 24px; margin-bottom: 10px;">➕</div>
+                    <strong>Point Sales</strong><br>
+                    <div style="margin-top: 10px; font-size: 20px;">$124K/year</div>
+                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.9;">Additional purchases</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 560px;">
+                <div class="info-box">
+                    <h3>💡 Why Multiple Streams Matter</h3>
+                    <p><strong>Diversified revenue reduces risk:</strong> If one stream underperforms, others compensate. The 25% redemption fee provides a high-margin foundation, while membership fees ensure predictable recurring revenue.</p>
+                    <p style="margin-top: 10px;"><strong>Year 2 Total:</strong> $930,550 from five different sources, creating a robust and sustainable business model.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
