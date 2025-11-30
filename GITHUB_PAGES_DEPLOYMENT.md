@@ -186,6 +186,17 @@ For stronger security, consider:
 - Try: Hard refresh browser (Ctrl+Shift+R)
 - Check: Browser console for errors (F12)
 
+**Issue:** "I don't see a login page, just the main content"
+- Solution: The file structure was wrong. It's been fixed.
+- The entry point is now `index.html` (login page)
+- Main content is `main.html`
+- Make sure you've pulled the latest changes: `git pull`
+
+**Issue:** "Navigation links are broken"
+- Solution: Links now point to `main.html` instead of `index.html`
+- This was updated in the fix above
+- Pull latest: `git pull`
+
 ---
 
 ## 📚 Useful Resources
